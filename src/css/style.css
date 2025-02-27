@@ -1,0 +1,242 @@
+/* 1 задача */
+.collapsible {
+  position: relative;
+}
+
+.toggle-btn {
+  padding: 15px;
+  background: #2474edf4;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  width: 100px;
+  transition: border 0.1s ease;
+}
+
+.toggle-btn:hover {
+  border: 2px solid #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.content {
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  width: 75%;
+  margin: 0 auto;
+  padding: 15px;
+  background: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  animation: rise-fade 4s infinite;
+  animation-play-state: paused;
+  animation-fill-mode: forwards;
+}
+
+/* Ключевые кадры для анимации */
+@keyframes rise-fade {
+  0% {
+    opacity: 0;
+    max-height: 0;
+  }
+  25% {
+    opacity: 1;
+    max-height: 500px;
+  }
+  50% {
+    opacity: 1;
+    max-height: 500px;
+  }
+  75% {
+    opacity: 0;
+    max-height: 0;
+  }
+  100% {
+    opacity: 0;
+    max-height: 0;
+  }
+}
+
+/* 2 задача */
+.feedback-widget {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 50vh;
+  background: white;
+  z-index: 1000;
+}
+
+.full-width {
+  width: 100%;
+  box-sizing: border-box; /* Включает padding и border в ширину */
+}
+
+.feedback-trigger {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  background: #ff4444;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 100ms linear;
+}
+
+.feedback-trigger:hover {
+  transform: scale(1.5);
+}
+
+.feedback-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  visibility: hidden;
+  /* transition: all 100ms linear; */
+  transition: opacity 100ms linear, visibility 0s 100ms; /* Анимация появления/исчезновения */
+  z-index: 1001;
+}
+
+.feedback-modal.active {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 100ms linear; /* Анимация появления */
+}
+
+.modal-content {
+  width: 400px;
+  max-width: 90vw;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.close-modal {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 24px;
+  cursor: pointer;
+  color: #666;
+  transition: color 100ms linear;
+}
+
+.close-modal:hover {
+  color: #000;
+}
+
+
+/* Стили формы */
+.form-title {
+  margin: 0 0 20px 0;
+  color: #333;
+  font-size: 1.5em;
+  text-align: center;
+}
+
+.message-input {
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  resize: vertical;
+  min-height: 100px;
+  font-family: inherit;
+  transition: border-color 100ms linear;
+}
+
+.message-input:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.submit-btn {
+  padding: 12px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition:
+    background-color 100ms linear,
+    transform 50ms linear;
+}
+
+.submit-btn:hover {
+  background: #0069d9;
+  border: 2px solid #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.submit-btn:active {
+  transform: scale(0.98);
+}
+
+/* 3 задача */
+.like-button-widget {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+}
+
+/* Кнопка "Like" */
+.like-button {
+  padding: 12px 24px;
+  background: #ff4444;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.like-button:hover {
+  transform: scale(1.1);
+}
+
+/* Стили для сердец */
+.heart {
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+}
+
+/* Анимация полета сердец */
+@keyframes heart-flight {
+  0% {
+    transform: translate(var(--x0), 0); /* Начальная позиция */
+    opacity: 1;
+  }
+  25% {
+    transform: translate(var(--x25), -50px); /* Первая точка траектории */
+    opacity: 1;
+  }
+  50% {
+    transform: translate(var(--x50), -100px); /* Вторая точка траектории */
+    opacity: 1;
+  }
+  75% {
+    transform: translate(var(--x75), -150px); /* Третья точка траектории */
+    opacity: 0.8;
+  }
+  100% {
+    transform: translate(var(--x100), -200px); /* Конечная позиция */
+    opacity: 0;
+  }
+}
